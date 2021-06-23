@@ -1,11 +1,13 @@
-# Method of the month: The Newey-West estimator and interrupted time series
-A ten-minute rough-and-ready talk introducing the Newey-West
-heteroskedasticity- and autocorrelation-robust estimator for a non-technical
-audience and assessing how useful it is for interrupted time series
-analysis of health policy interventions.
+# CRE-MI Methods Group journal club: Prevalent new-user cohort design
+A journal club presentation based on Tran and Suissa (2021).
 
-Delivered to the Medicines Policy Research Unit monthly Work In Progress
-meeting on 20 May 2021.
+This paper applies the prevalent new-user cohort design to look the effect
+of PPI treatment on mortality in idiopathic pulmonary fibrosis. It compares
+two different approaches to informative censoring within the PNUC design,
+along with the marginal structural Cox model (MSCM) as an alternative.
+
+Delivered to the Centre of Research Excellence in Medicines Intelligence
+Methods Group journal club meeting on 1 July 2021.
 
 [![CC BY-NC-SA 4.0][cc-by-nc-sa-shield]][cc-by-nc-sa]
 
