@@ -1,6 +1,6 @@
-% Method of the month: The Newey-West estimator and interrupted time series
+% CRE-MI Methods Group journal club: Prevalent new-user cohort design 
 % (c) 2021 Malcolm Gillies <malcolm.gillies@unsw.edu.au>
-% https://github.com/mbg-unsw/neweywest
+% https://github.com/mbg-unsw/pnuc
 %
 % This work is licensed under a
 % Creative Commons Attribution-NonCommercial-ShareAlike 4.0
@@ -18,6 +18,7 @@
 \usepackage[libertine]{newtxmath}
 \usepackage{graphicx}
 \usepackage{tikz}
+\usetikzlibrary{shadows}
 \usepackage{tikzpagenodes}
 \usepackage{natbib}
 \usepackage{gitinfo2}
@@ -27,14 +28,60 @@
 \setbeamertemplate{navigation symbols}{} % remove navigation symbols
 \setbeamercolor*{item}{fg=darkred}
 
-\title{``Method of the month'': The Newey--West estimator and interrupted time series}
+\title{CRE-MI Methods Group journal club: Prevalent new-user cohort design}
 \author{Malcolm Gillies}
-\date{20 May 2021}
+\date{1 July 2021}
 \usebackgroundtemplate{%
 \begin{tikzpicture}[remember picture,overlay]
     \node[anchor=south west,scale=1,rotate=90] at ([shift={(0cm,0cm)}]current page marginpar area.south east) {\gitMark};
 \end{tikzpicture}%
 }
+
+\newif\ifsidebartheme
+\sidebarthemefalse
+
+\newdimen\contentheight
+\newdimen\contentwidth
+\newdimen\contentleft
+\newdimen\contentbottom
+\makeatletter
+\newcommand*{\calculatespace}{%
+    \contentheight=\paperheight%
+    \ifx\beamer@frametitle\@empty%
+        \setbox\@tempboxa=\box\voidb@x%
+      \else%
+        \setbox\@tempboxa=\vbox{%
+          \vbox{}%
+          {\parskip0pt\usebeamertemplate***{frametitle}}%
+        }%
+        \ifsidebartheme%
+          \advance\contentheight by-1em%
+        \fi%
+      \fi%
+    \advance\contentheight by-\ht\@tempboxa%
+    \advance\contentheight by-\dp\@tempboxa%
+    \advance\contentheight by-\beamer@frametopskip%
+    \ifbeamer@plainframe%
+    \contentbottom=0pt%
+    \else%
+    \advance\contentheight by-\headheight%
+    \advance\contentheight by\headdp%
+    \advance\contentheight by-\footheight%
+    \advance\contentheight by4pt%
+    \contentbottom=\footheight%
+    \advance\contentbottom by-4pt%
+    \fi%
+    \contentwidth=\paperwidth%
+    \ifbeamer@plainframe%
+    \contentleft=0pt%
+    \else%
+    \advance\contentwidth by-\beamer@rightsidebar%
+    \advance\contentwidth by-\beamer@leftsidebar\relax%
+    \contentleft=\beamer@leftsidebar%
+    \fi%
+}
+\makeatother
+
 \begin{document}
 
 {
@@ -44,110 +91,141 @@
 \end{frame}
 }
 
-\begin{frame}{What is the Newey--West estimator?}
+\begin{frame}{Today's paper}
+\calculatespace%
+\begin{columns}
+\begin{column}{0.20\contentwidth}
+\begin{tikzpicture}
+  \node[drop shadow={shadow xshift=.8ex,shadow yshift=-.8ex},fill=white,draw] at (0,0) {\includegraphics[width=\textwidth]{ref/suissa-pages-01_sm.jpg}};
+\end{tikzpicture}
+\end{column}
+\begin{column}{0.70\contentwidth}
 	\begin{itemize}
-		\item Time series data are often \emph{autocorrelated}
-		\item This messes up inference e.g. 95\% CI too small
-		\item You can model the correlation structure e.g. ARIMA
-		\item Or use a Heteroskedasticity- and Autocorrelation-Robust (aka HAC) method
-		\begin{itemize}
-			\item e.g. Newey--West (1987) or Newey--West (1994)
-		\end{itemize}
+		\item Tran \& Suissa (2021)
+	\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+% Introduce paper
+% Introduce PNUC
+
+\begin{frame}{Summary of designs}
+	\begin{itemize}
+		\item (Incident) (Active-comparator) new-user cohort
+		\item Prevalent new-user cohort
+		\item Marginal structural (Cox) model
 	\end{itemize}
 \end{frame}
 
-\begin{frame}{How do I do use it?}
-\texttt{library(sandwich)} \\
-\texttt{library(lmtest)} \\
-\medskip
-\texttt{ts.lm <- lm(log(cnt)\textasciitilde 1+step+trend, data=tss)} \\
-\texttt{coeftest(ts.lm2, df=Inf, vcov. = NeweyWest(ts.lm2, adjust=TRUE))}
+\begin{frame}{Why prevalent new-user?}
 \end{frame}
 
-\begin{frame}{Is anyone else using it?}
-	\begin{itemize}
-		\item Review of ITS in healthcare
-		\citep{hudson_methodology_2019}
-		\begin{itemize}
-			\item 2/116 studies published in 2015 used N--W
-		\end{itemize}
-		\item Review of ITS studies of public health interventions
-		\citep{turner_design_2020}
-		\begin{itemize}
-			\item 2/200 studies publishd 2013--17 used N--W
-		\end{itemize}
-	\end{itemize}
-\end{frame}
-
-\usebackgroundtemplate{\includegraphics[width=\paperwidth]{ref/newey-west-cites.PNG}}
-\begin{frame}[plain,b]
-\begin{flushright}\texttt{https://app.dimensions.ai/}\end{flushright}
-\end{frame}
-\usebackgroundtemplate{}
-
-
-\begin{frame}{Empirical comparison 1}
-	\begin{itemize}
-		\item Simulation study
-		\citep{turner_evaluation_2020}
-		\item Models fit with six methods:
-		\begin{itemize}
-			\item OLS, OLS/N--W, GLS/P--W, REML, REML/Satterthwaite, ARIMA
-		\end{itemize}
-		\item AR(1) data, N--W \texttt{lag=1}
-		\item For inference \( T=48 \)
-		\begin{itemize}
-			\item ARIMA coverage OK
-			\item REML similar to ARIMA, REML/Satterthwaite >100\% coverage
-			\item \textbf{N--W poor coverage}
-		\end{itemize}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Empirical comparison 2}
-	\begin{itemize}
-		\item Published ITS studies (\( n=190 \), median \(T=48\))
-		\citep{turner_comparison_2020}
-		\item Data re-fit with six methods:
-		\begin{itemize}
-			\item OLS, OLS/N--W, GLS/P--W, REML, REML/Satterthwaite, ARIMA
-		\end{itemize}
-		\item For inference
-		\begin{itemize}
-			\item REML/Satterthwaite most conservative
-			\item ARIMA 2nd most conservative
-			\item REML 3rd most conservative
-		\end{itemize}
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Bottom line}
+\begin{frame}{Motivation for Tran \& Suissa}
     \begin{itemize}
-        \item Don't use N--W (1987) with \texttt{lag=1}
-        \item N--W (1994) with small sample adjustment might be OK
-		\item AR(1) with REML estimation sounds good. How do we do it?
-        \item Post-Newey--West methods tantalizingly close!
-		\item Maybe stick with ARIMA after all?
+	\item Are PPIs efficacious in idiopathic pulmonary fibrosis?
+	\item Contention: observed effects are due to bias
     \end{itemize}
 \end{frame}
 
-\begin{frame}{What do the econometricians say?}
-HAR Inference: Recommendations for Practice
-
-\cite{lazarus_har_2018}
-\end{frame}
-
-\begin{frame}{Thanks}
+\begin{frame}{Idiopathic Pulmonary Fibrosis (IPF)}
     \begin{itemize}
-        \item Andrea
+	\item Prognosis ...
+	\item There is no effective treatment
+	\item PPIs ...
     \end{itemize}
 \end{frame}
+
+\begin{frame}{Further twists}
+    \begin{itemize}
+	\item Informative censoring ...
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Prevalent new-user design in detail}
+    \begin{itemize}
+	\item Defining the base cohort
+	\item Forming risk sets
+	\item Estimating propensity score
+	\item Matching and forming analysis cohort
+	\item Estimating the causal effect
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Defining exposure sets}
+    \calculatespace%
+    \begin{center}
+	\includegraphics[height=0.85\contentheight]{ref/suimoodell-fig3.pdf}
+    \end{center}
+    cite suimoodell
+\end{frame}
+
+\begin{frame}{Matching}
+    \calculatespace%
+    \begin{center}
+	\includegraphics[height=0.85\contentheight]{ref/suimoodell-fig4.pdf}
+    \end{center}
+    cite suimoodell
+\end{frame}
+
+\begin{frame}{More on informative censoring}
+    \begin{itemize}
+	\item ? illustrative data on censoring rates etc
+	\item restriction v weighting
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Results 1}
+    \calculatespace%
+    \begin{center}
+	\includegraphics[height=0.90\contentheight]{ref/suissa-fig3-pnuc.pdf}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Marginal Structural Cox Model}
+    \begin{itemize}
+	\item ...
+	\item ? nice picture
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Results 2}
+    \calculatespace%
+    \begin{center}
+	\includegraphics[height=0.90\contentheight]{ref/suissa-fig3-mscm.pdf}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Estimands}
+    \begin{itemize}
+	\item ? figure showing follow up compared with base cohort
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Loose ends}
+    \begin{itemize}
+	\item Sampling with/without replacement
+	\item Conditioning on length of exposure v history
+	\item Positivity and matching
+	\item Estimating the propensity score
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Scenarios}
+    \calculatespace%
+	\includegraphics[width=0.85\contentwidth]{ref/webster-fig1.pdf}
+    cite webster
+\end{frame}
+
+%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{ref/newey-west-cites.PNG}}
+%\begin{frame}[plain,b]
+%\begin{flushright}\texttt{https://app.dimensions.ai/}\end{flushright}
+%\end{frame}
+%\usebackgroundtemplate{}
 
 \begin{frame}{References}
-%        \bibliographystyle{apalike}
-%        \bibliographystyle{abbrv}
-        \tiny\bibliography{nw.bib}
-        \bibliographystyle{abbrvnat}
+%        \tiny\bibliography{nw.bib}
+%        \bibliographystyle{abbrvnat}
 \end{frame}
 
 \end{document}
