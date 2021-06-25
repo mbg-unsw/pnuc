@@ -111,15 +111,14 @@
 % Introduce paper
 % Introduce PNUC
 
-\begin{frame}{Summary of designs}
-	\begin{itemize}
-		\item (Incident) (Active-comparator) new-user cohort
-		\item Prevalent new-user cohort
-		\item Marginal structural (Cox) model
-	\end{itemize}
-\end{frame}
-
-\begin{frame}{Why prevalent new-user?}
+\begin{frame}{Talk outline}
+    \begin{itemize}
+	\item Paper background
+	\item Prevalent new-user cohort method in detail
+	\item Adjusting for informative censoring
+	\item What does the PNUC method estimate?
+	\item Loose ends
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Motivation for Tran \& Suissa}
@@ -138,20 +137,28 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Further twists}
+\begin{frame}{Why an active comparator new-user design?}
     \begin{itemize}
-	\item Informative censoring ...
+	\item Confounding by indication (inactive comparator)
+	\item Healthy adherer bias (prevalent users)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Why \emph{prevalent} new-user?}
+    \begin{itemize}
+	\item Increase sample size (few treatment naive patients)
+	\item Better external validity
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Prevalent new-user design in detail}
-    \begin{itemize}
+    \begin{enumerate}
 	\item Defining the base cohort
 	\item Forming risk sets
 	\item Estimating propensity score
 	\item Matching and forming analysis cohort
 	\item Estimating the causal effect
-    \end{itemize}
+    \end{enumerate}
 \end{frame}
 
 \begin{frame}{Defining exposure sets}
@@ -171,10 +178,25 @@
 \flushright{\small{\citet{suissa_prevalent_2017}}}
 \end{frame}
 
-\begin{frame}{More on informative censoring}
+\begin{frame}{Informative censoring}
     \begin{itemize}
-	\item ? illustrative data on censoring rates etc
-	\item restriction v weighting
+	\item ``prevalent user'' = IPF patient \emph{not} treated with PPI
+	\item Follow-up of prevalent users is censored if PPI treatment starts
+	\item Starting PPI = patient is sicker (but still alive)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Adjusting for informative censoring}
+    \begin{itemize}
+	\item Restriction
+	\begin{itemize}
+	    \item exclude ever PPI users from prevalent cohort
+	\end{itemize}
+	\item Weighting
+	\begin{itemize}
+	    \item use inverse probability of censoring weights (IPCW)
+	    \item estimate from logistic regression model (\emph{\`{a} la} propensity)
+	\end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -200,24 +222,25 @@
 \end{frame}
 
 \begin{frame}{Estimands}
-    \begin{itemize}
-	\item ? figure showing follow up compared with base cohort
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Loose ends}
-    \begin{itemize}
-	\item Sampling with/without replacement
-	\item Conditioning on length of exposure v history
-	\item Positivity and matching
-	\item Estimating the propensity score
-    \end{itemize}
+    \calculatespace%
+    \begin{center}
+	\includegraphics[height=0.95\contentheight]{ref/estimands.pdf}
+    \end{center}
 \end{frame}
 
 \begin{frame}{Scenarios}
     \calculatespace%
 	\includegraphics[width=0.85\contentwidth]{ref/webster-fig1.pdf}
 \flushright{\small{\citet{webster-clark_initiator_2020}}}
+\end{frame}
+
+\begin{frame}{Loose ends}
+    \begin{itemize}
+	\item Sampling with/without replacement
+	\item Conditioning on length of exposure vs entire history
+	\item Positivity and matching
+	\item Estimating the propensity score
+    \end{itemize}
 \end{frame}
 
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{ref/newey-west-cites.PNG}}
