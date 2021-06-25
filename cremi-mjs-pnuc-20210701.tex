@@ -20,7 +20,7 @@
 \usepackage{tikz}
 \usetikzlibrary{shadows}
 \usepackage{tikzpagenodes}
-\usepackage{natbib}
+\usepackage[round]{natbib}
 \usepackage{gitinfo2}
 
 \renewcommand{\gitMark}{\color{gray}\texttt{\tiny\gitBranch\,@\,\gitAbbrevHash\,\gitAuthorDate}}
@@ -101,7 +101,8 @@
 \end{column}
 \begin{column}{0.70\contentwidth}
 	\begin{itemize}
-		\item Tran \& Suissa (2021)
+		\item T.~Tran and S.~Suissa. \textbf{Comparing {New}-{User} {Cohort} {Designs}: {The} {Example} of {Proton} {Pump} {Inhibitor} {Effectiveness} in {Idiopathic} {Pulmonary} {Fibrosis}.} \emph{American Journal of Epidemiology}, 190\penalty0 (5):\penalty0 928--938, May 2021. doi:10.1093/aje/kwaa242.
+\nocite{tran_comparing_2021}
 	\end{itemize}
 \end{column}
 \end{columns}
@@ -158,7 +159,8 @@
     \begin{center}
 	\includegraphics[height=0.85\contentheight]{ref/suimoodell-fig3.pdf}
     \end{center}
-    cite suimoodell
+\flushright{\small{\citet{suissa_prevalent_2017}}}
+
 \end{frame}
 
 \begin{frame}{Matching}
@@ -166,7 +168,7 @@
     \begin{center}
 	\includegraphics[height=0.85\contentheight]{ref/suimoodell-fig4.pdf}
     \end{center}
-    cite suimoodell
+\flushright{\small{\citet{suissa_prevalent_2017}}}
 \end{frame}
 
 \begin{frame}{More on informative censoring}
@@ -215,7 +217,7 @@
 \begin{frame}{Scenarios}
     \calculatespace%
 	\includegraphics[width=0.85\contentwidth]{ref/webster-fig1.pdf}
-    cite webster
+\flushright{\small{\citet{webster-clark_initiator_2020}}}
 \end{frame}
 
 %\usebackgroundtemplate{\includegraphics[width=\paperwidth]{ref/newey-west-cites.PNG}}
@@ -224,9 +226,24 @@
 %\end{frame}
 %\usebackgroundtemplate{}
 
+\begin{frame}{Discussion}
+    \begin{itemize}
+	\item Have you used the prevalent new-user cohort design or the marginal structural Cox model approach? If so, please tell us about it.
+    	\item Would you use either of these methods for your current research interests? What do you see as the barriers to using them?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Other business}
+    \begin{itemize}
+	\item Suggestions for articles or topics to discuss
+	\item Volunteers to present
+	\item Comments on format, timing, frequency and audience for the journal club
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{References}
-%        \tiny\bibliography{nw.bib}
-%        \bibliographystyle{abbrvnat}
+        \tiny\bibliography{pnuc.bib}
+        \bibliographystyle{abbrvnat}
 \end{frame}
 
 \end{document}
