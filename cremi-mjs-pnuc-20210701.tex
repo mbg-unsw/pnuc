@@ -116,15 +116,19 @@
 	\item Paper background
 	\item Prevalent new-user cohort method in detail
 	\item Adjusting for informative censoring
+	\item Results
 	\item What does the PNUC method estimate?
 	\item Loose ends
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Motivation for Tran \& Suissa}
+\begin{frame}{Introduction}
     \begin{itemize}
-	\item Are PPIs efficacious in idiopathic pulmonary fibrosis?
-	\item Contention: observed effects are due to bias
+	\item Question: Are PPIs efficacious in idiopathic pulmonary fibrosis?
+	\item Contention: Effects seen in earlier studies are due to bias
+	\item Data: UK linked GP and hospital data (CPRD-GOLD/HES/ONS), $n=2944$
+	\item Outcomes: All-cause mortality, respiratory death, hospitalisation
+	\item Covariates: Demographics, comorbidity, medicines (all time-varying)
     \end{itemize}
 \end{frame}
 
@@ -133,11 +137,11 @@
         \item Progressive scarring of the lungs, cause unknown
 	\item Average life expectancy after diagnosis about four years
 	\item Pirfenidone (2008) and nintedanib (2014) slow progression
-	\item Proton pump inhibitors also recommended (weak evidence)
+	\item Proton pump inhibitors also guideline recommended (weak evidence)
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Why an active comparator new-user design?}
+\begin{frame}{Review: Active comparator new-user cohort design}
     \begin{itemize}
 	\item Confounding by indication (inactive comparator)
 	\item Healthy adherer bias (prevalent users)
@@ -146,22 +150,23 @@
 
 \begin{frame}{Why \emph{prevalent} new-user?}
     \begin{itemize}
-	\item Increase sample size (few treatment naive patients)
-	\item Better external validity
+	\item Increase sample size if few treatment-naive patients
+	\item Better external validity e.g. disease progression
+	\item Key feature: conditioning on length of exposure
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Prevalent new-user design in detail}
+\begin{frame}{Prevalent new-user cohort design step by step}
     \begin{enumerate}
 	\item Defining the base cohort
-	\item Forming risk sets
-	\item Estimating propensity score
-	\item Matching and forming analysis cohort
+	\item Forming exposure sets
+	\item Estimating the propensity score
+	\item Matching and forming the analysis cohort
 	\item Estimating the causal effect
     \end{enumerate}
 \end{frame}
 
-\begin{frame}{Defining exposure sets}
+\begin{frame}{Defining exposure sets and estimating the propensity score}
     \calculatespace%
     \begin{center}
 	\includegraphics[height=0.85\contentheight]{ref/suimoodell-fig3.pdf}
@@ -180,7 +185,8 @@
 
 \begin{frame}{Informative censoring}
     \begin{itemize}
-	\item ``prevalent user'' = IPF patient \emph{not} treated with PPI
+	\item In this study, ``prevalent user'' = IPF patient \emph{not}
+	      treated with PPI
 	\item Follow-up of prevalent users is censored if PPI treatment starts
 	\item Starting PPI = patient is sicker (but still alive)
     \end{itemize}
@@ -188,11 +194,11 @@
 
 \begin{frame}{Adjusting for informative censoring}
     \begin{itemize}
-	\item Restriction
+	\item Option 1: Restriction
 	\begin{itemize}
-	    \item exclude ever PPI users from prevalent cohort
+	    \item exclude PPI ever users from prevalent cohort
 	\end{itemize}
-	\item Weighting
+	\item Option 2: Weighting
 	\begin{itemize}
 	    \item use inverse probability of censoring weights (IPCW)
 	    \item estimate from logistic regression model (\emph{\`{a} la} propensity)
@@ -209,8 +215,11 @@
 
 \begin{frame}{Marginal Structural Cox Model}
     \begin{itemize}
-	\item ...
-	\item ? nice picture
+	\item All patients followed from IPF diagnosis
+	\item Exposure and covariates assessed in each person-month
+	\item Inverse probability of treatment weights (IPTW)
+	\item Inverse probability of censoring weigts (IPCW)
+	\item Estimation with weighted time-dependent Cox model
     \end{itemize}
 \end{frame}
 
@@ -240,6 +249,7 @@
 	\item Conditioning on length of exposure vs entire history
 	\item Positivity and matching
 	\item Estimating the propensity score
+	\item See also: \url{https://pharmacoepi.unc.edu/wp-content/uploads/sites/6788/2020/12/Webster-Clark_Michael_PNU.pdf}
     \end{itemize}
 \end{frame}
 
