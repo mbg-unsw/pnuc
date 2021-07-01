@@ -1,4 +1,4 @@
-# CRE-MI Methods Group journal club: Prevalent new-user cohort design
+# MI-CRE Methods Group journal club: Prevalent new-user cohort design
 A journal club presentation based on Tran and Suissa (2021).
 
 This paper applies the prevalent new-user cohort design to look the effect
