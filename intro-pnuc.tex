@@ -114,11 +114,38 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Review: Active comparator new-user cohort design}
+\begin{frame}{Review: Active comparator new-user (ACNU) cohort design}
     \begin{itemize}
-	\item Confounding by indication (inactive comparator)
-	\item Healthy adherer bias (prevalent users)
+	\item Problems avoided by the ACNU design
+	\begin{itemize}
+		\item Confounding by indication (inactive comparator)
+		\item Healthy adherer bias (prevalent users)
+	\end{itemize}
     \end{itemize}
+\end{frame}
+
+\begin{frame}{Popularity of the PNUC design}
+% search date
+% number of studies
+% code not published
+% 80% with Suissa's mob
+\flushright{\small{\citet{tazare_prevalent_2022}}}
+\end{frame}
+
+\begin{frame}{PNUC design in context}
+	\centering
+	\begin{tabular}{ll}
+	\hline
+		\bf{No-use} & \bf{Traditional no use} \\
+		& \bf{No use episodes} \\
+	\hline
+		\bf{Active-comparator}  & \bf{Generalized prevalent new user} \\
+		& \emph{\bf{Prevalent new user}} \\
+		& \bf{Hierarchical prevalent new user} \\
+		& \bf{Active comparator new user} \\
+	\hline
+	\end{tabular}
+\flushright{\small{\citet{wintzell_selection_2022}}}
 \end{frame}
 
 \begin{frame}{Prevalent new-user cohort design step by step}
@@ -148,12 +175,11 @@
 \flushright{\small{\citet{suissa_prevalent_2017}}}
 \end{frame}
 
-\begin{frame}{Informative censoring}
+\begin{frame}{Informative censoring among comparator group}
     \begin{itemize}
-	\item In this study, ``prevalent user'' = IPF patient \emph{not}
-	      treated with PPI
-	\item Follow-up of prevalent users is censored if PPI treatment starts
-	\item Starting PPI = patient is still alive (but sicker?)
+	\item Follow-up of comparator group is censored if study treatment starts
+	\item Starting treatment = patient is still alive (but sicker?)
+	\item Remove bias through inverse probability of censoring weights (IPCW)
     \end{itemize}
 \end{frame}
 
@@ -208,20 +234,35 @@
     \end{center}
 \end{frame}
 
+\begin{frame}{PNUC vs MSCM}
+	\centering
+	\begin{tabular}{lll}
+	\hline
+		& PNUC & MSCM \\
+	\hline
+		Complexity & XX & XX \\
+		Computation & XX & XX \\
+		Precision & XX & XX \\
+		Estimand & XX & XX \\
+	\hline
+	\end{tabular}
+\flushright{\small{\citet{webster-clark_alternative_2022}}}
+\end{frame}
+
 \begin{frame}{PNUC sub-cohorts}
     \calculatespace%
 	\includegraphics[width=0.85\contentwidth]{ref/webster-fig1.pdf}
 \flushright{\small{\citet{webster-clark_initiator_2020}}}
 \end{frame}
 
-\begin{frame}{Loose ends}
+\begin{frame}{Developments}
     \begin{itemize}
-	\item Matching with/without replacement
-	\item Conditioning on length of exposure vs entire history
+	\item Matching with/without replacement or weighting
+	\item How to condition on ``length of exposure''?
 	\item Positivity and matching
 	\item Estimating the propensity score
-	\item See also: \url{https://pharmacoepi.unc.edu/wp-content/uploads/sites/6788/2020/12/Webster-Clark_Michael_PNU.pdf}
     \end{itemize}
+\flushright{\small{\citet{webster-clark_presentation_2020}}}
 \end{frame}
 
 \begin{frame}{Discussion}
