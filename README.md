@@ -1,10 +1,13 @@
-# MI-CRE Methods Group journal club: Prevalent new-user cohort design
-A journal club presentation based on Tran and Suissa (2021).
+# Introduction to the prevalent new-user cohort design
+An introuctory presentation based on Tran and Suissa (2021).
 
 This paper applies the prevalent new-user cohort design to look at the effect
-of PPI treatment on mortality in idiopathic pulmonary fibrosis. It compares
-two different approaches to informative censoring within the PNUC design,
-along with the marginal structural Cox model (MSCM) as an alternative.
+of PPI treatment on mortality in idiopathic pulmonary fibrosis. It describes
+the PNUC design, puts it in context and compares its results with the
+marginal structural Cox model (MSCM) as an alternative.
+
+Delivered to the University of New South Wales Causal research, analysis
+and inference collective (CRAIC) meeting on 5 February 2024.
 
 Delivered to the Centre of Research Excellence in Medicines Intelligence
 Methods Group journal club meeting on 1 July 2021.
