@@ -1,5 +1,5 @@
-% MI-CRE Methods Group journal club: Prevalent new-user cohort design 
-% (c) 2021 Malcolm Gillies <malcolm.gillies@unsw.edu.au>
+% Introduction to the prevalent new-user cohort design 
+% (c) 2021-2024 Malcolm Gillies <malcolm.gillies@unsw.edu.au>
 % https://github.com/mbg-unsw/pnuc
 %
 % This work is licensed under a
@@ -30,10 +30,10 @@
 \setbeamertemplate{navigation symbols}{} % remove navigation symbols
 \setbeamercolor*{item}{fg=darkred}
 
-\title{MI-CRE Methods Group journal club: Prevalent new-user cohort design}
+\title{UNSW CRAIC: Prevalent new-user cohort design}
 \author{Malcolm Gillies}
 \institute{\url{https://github.com/mbg-unsw/pnuc}}
-\date{1 July 2021}
+\date{5 February 2024}
 \usebackgroundtemplate{%
 \begin{tikzpicture}[remember picture,overlay]
     \node[anchor=south west,scale=1,rotate=90] at ([shift={(0cm,0cm)}]current page marginpar area.south east) {\gitMark};
@@ -94,26 +94,6 @@
 \end{frame}
 }
 
-\begin{frame}{Today's paper}
-\calculatespace%
-\begin{columns}
-\begin{column}{0.20\contentwidth}
-\begin{tikzpicture}
-  \node[drop shadow={shadow xshift=.8ex,shadow yshift=-.8ex},fill=white,draw] at (0,0) {\includegraphics[width=\textwidth]{ref/suissa-pages-01_sm.jpg}};
-\end{tikzpicture}
-\end{column}
-\begin{column}{0.70\contentwidth}
-	\begin{itemize}
-		\item T.~Tran and S.~Suissa. \textbf{Comparing {New}-{User} {Cohort} {Designs}: {The} {Example} of {Proton} {Pump} {Inhibitor} {Effectiveness} in {Idiopathic} {Pulmonary} {Fibrosis}.} \emph{American Journal of Epidemiology}, 190\penalty0 (5):\penalty0 928--938, May 2021. doi:10.1093/aje/kwaa242.
-\nocite{tran_comparing_2021}
-	\end{itemize}
-\end{column}
-\end{columns}
-\end{frame}
-
-% Introduce paper
-% Introduce PNUC
-
 \begin{frame}{Talk outline}
     \begin{itemize}
 	\item Paper background
@@ -125,23 +105,12 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{What is the paper about?}
+\begin{frame}{Why \emph{prevalent} new-user?}
     \begin{itemize}
-	\item Question: Are PPIs efficacious in idiopathic pulmonary fibrosis?
-	\item Data: UK linked GP and hospital data (CPRD-GOLD/HES/ONS), $n=2944$
-	\item Outcomes: All-cause mortality, respiratory death, hospitalisation
-	\item Covariates: Demographics, comorbidity, medicines (all time-varying)
-	\item Compare results from three different study designs
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Idiopathic Pulmonary Fibrosis (IPF)}
-    \begin{itemize}
-        \item Progressive scarring of the lungs, cause unknown
-	\item Average life expectancy after diagnosis about four years
-	\item Pirfenidone (2008) and nintedanib (2014) slow progression
-	\item Proton pump inhibitors also guideline recommended (weak evidence)
-	\item Contention: PPI effects seen in earlier studies are due to bias
+	\item \emph{i.e.} Compare those staying on old tx with switchers to new
+	\item Increase sample size if few treatment-naive patients
+	\item Better external validity e.g. disease progression
+	\item Key feature: conditioning on length of exposure
     \end{itemize}
 \end{frame}
 
@@ -149,15 +118,6 @@
     \begin{itemize}
 	\item Confounding by indication (inactive comparator)
 	\item Healthy adherer bias (prevalent users)
-    \end{itemize}
-\end{frame}
-
-\begin{frame}{Why \emph{prevalent} new-user?}
-    \begin{itemize}
-	\item \emph{i.e.} Compare those staying on old tx with switchers to new
-	\item Increase sample size if few treatment-naive patients
-	\item Better external validity e.g. disease progression
-	\item Key feature: conditioning on length of exposure
     \end{itemize}
 \end{frame}
 
@@ -197,48 +157,54 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Adjusting for informative censoring}
+\begin{frame}{Example study}
+\calculatespace%
+\begin{columns}
+\begin{column}{0.20\contentwidth}
+\begin{tikzpicture}
+  \node[drop shadow={shadow xshift=.8ex,shadow yshift=-.8ex},fill=white,draw] at (0,0) {\includegraphics[width=\textwidth]{ref/suissa-pages-01_sm.jpg}};
+\end{tikzpicture}
+\end{column}
+\begin{column}{0.70\contentwidth}
+	\begin{itemize}
+		\item T.~Tran and S.~Suissa. \textbf{Comparing {New}-{User} {Cohort} {Designs}: {The} {Example} of {Proton} {Pump} {Inhibitor} {Effectiveness} in {Idiopathic} {Pulmonary} {Fibrosis}.} \emph{American Journal of Epidemiology}, 190\penalty0 (5):\penalty0 928--938, May 2021. doi:10.1093/aje/kwaa242.
+\nocite{tran_comparing_2021}
+	\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{What is the paper about?}
     \begin{itemize}
-	\item Option 1: Restriction
-	\begin{itemize}
-	    \item exclude PPI ever users from prevalent cohort
-	\end{itemize}
-	\item Option 2: Weighting
-	\begin{itemize}
-	    \item use inverse probability of censoring weights (IPCW)
-	    \item estimate from logistic regression model (\emph{\`{a} la} propensity)
-	\end{itemize}
+	\item Question: Are PPIs efficacious in idiopathic pulmonary fibrosis?
+	\item Data: UK linked GP and hospital data (CPRD-GOLD/HES/ONS), $n=2944$
+	\item Outcomes: All-cause mortality, respiratory death, hospitalisation
+	\item Covariates: Demographics, comorbidity, medicines (all time-varying)
+	\item Compare results from three different study designs
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Results 1}
-    \calculatespace%
-    \begin{center}
-	\includegraphics[height=0.90\contentheight]{ref/suissa-fig3-pnuc.pdf}
-    \end{center}
-\end{frame}
-
-\begin{frame}{Marginal Structural Cox Model}
+\begin{frame}{Idiopathic Pulmonary Fibrosis (IPF)}
     \begin{itemize}
-	\item All patients followed from IPF diagnosis
-	\item Exposure and covariates assessed in each person-month
-	\item Inverse probability of treatment weights (IPTW)
-	\item Inverse probability of censoring weights (IPCW)
-	\item Estimation with weighted time-dependent Cox model
+        \item Progressive scarring of the lungs, cause unknown
+	\item Average life expectancy after diagnosis about four years
+	\item Pirfenidone (2008) and nintedanib (2014) slow progression
+	\item Proton pump inhibitors also guideline recommended (weak evidence)
+	\item Contention: PPI effects seen in earlier studies are due to bias
     \end{itemize}
-\end{frame}
-
-\begin{frame}{Results 2}
-    \calculatespace%
-    \begin{center}
-	\includegraphics[height=0.90\contentheight]{ref/suissa-fig3-mscm.pdf}
-    \end{center}
 \end{frame}
 
 \begin{frame}{Estimands}
     \calculatespace%
     \begin{center}
 	\includegraphics[height=0.95\contentheight]{ref/estimands.pdf}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Results}
+    \calculatespace%
+    \begin{center}
+	\includegraphics[height=0.90\contentheight]{ref/suissa-fig3-mscm.pdf}
     \end{center}
 \end{frame}
 
@@ -258,12 +224,6 @@
     \end{itemize}
 \end{frame}
 
-%\usebackgroundtemplate{\includegraphics[width=\paperwidth]{ref/newey-west-cites.PNG}}
-%\begin{frame}[plain,b]
-%\begin{flushright}\texttt{https://app.dimensions.ai/}\end{flushright}
-%\end{frame}
-%\usebackgroundtemplate{}
-
 \begin{frame}{Discussion}
     \begin{itemize}
 	\item Have you used the prevalent new-user cohort design or the marginal structural Cox model approach? If so, please tell us about it.
@@ -274,6 +234,13 @@
 \begin{frame}{References}
         \tiny\bibliography{pnuc.bib}
         \bibliographystyle{abbrvnat}
+\end{frame}
+
+\begin{frame}{Acknowledgments}
+    \begin{itemize}
+	\item An earlier version was presented to the Medicine
+	Intelligence CRE Methods journal club on 1 July 2021
+    \end{itemize}
 \end{frame}
 
 \end{document}
