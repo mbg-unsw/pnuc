@@ -96,12 +96,12 @@
 
 \begin{frame}{Talk outline}
     \begin{itemize}
-	\item Paper background
-	\item Prevalent new-user cohort method in detail
-	\item Adjusting for informative censoring
-	\item Results
-	\item What does the PNUC method estimate?
-	\item Loose ends
+	\item What \& why
+	\item Literature review
+	\item In context
+	\item Step by step
+	\item Example
+	\item Developments
     \end{itemize}
 \end{frame}
 
@@ -109,14 +109,28 @@
     \begin{itemize}
 	\item \emph{i.e.} Compare those staying on old tx with switchers to new
 	\item Increase sample size if few treatment-naive patients
-	\item Better external validity e.g. disease progression
+	\item Better external validity if disease progression
 	\item Key feature: conditioning on length of exposure
+	\item Alternative to Marginal Structure Models (MSM)
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Review: Active comparator new-user (ACNU) cohort design}
+\begin{frame}{Popularity of the PNUC design}
+% https://tex.stackexchange.com/questions/581745/beamer-moving-text-to-the-bottom-of-the-page
+\vskip0pt plus 1filll
+\begin{itemize}
+	\item Lit review of PNUC to 9 May 2022
+	\item 19 publications found
+	\item 80\% were collaborations with McGill
+	\item Noone has published code
+\end{itemize}
+\vskip0pt plus 1filll
+\flushright{\small{\citet{tazare_prevalent_2022}}}
+\end{frame}
+
+\begin{frame}{Active comparator new-user (ACNU) cohort design}
     \begin{itemize}
-	\item Problems avoided by the ACNU design
+	\item Problems avoided by the ACNU design:
 	\begin{itemize}
 		\item Confounding by indication (inactive comparator)
 		\item Healthy adherer bias (prevalent users)
@@ -124,15 +138,13 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Popularity of the PNUC design}
-% search date
-% number of studies
-% code not published
-% 80% with Suissa's mob
-\flushright{\small{\citet{tazare_prevalent_2022}}}
-\end{frame}
-
 \begin{frame}{PNUC design in context}
+\begin{tikzpicture}[remember picture,overlay]
+    \node[anchor=south east,scale=1,rotate=90] at ([shift={(1cm,-2cm)}]current page text area.north west) {Increasingly restrictive};
+    \draw[thick,<-] ([shift={(1cm,1cm)}]current page text area.south west) --
+    ([shift={(1cm,-2cm)}]current page text area.north west);
+\end{tikzpicture}%
+\vskip0pt plus 1filll
 	\centering
 	\begin{tabular}{ll}
 	\hline
@@ -140,12 +152,36 @@
 		& \bf{No use episodes} \\
 	\hline
 		\bf{Active-comparator}  & \bf{Generalized prevalent new user} \\
-		& \emph{\bf{Prevalent new user}} \\
+		& \alert{\bf{Prevalent new user}} \\
 		& \bf{Hierarchical prevalent new user} \\
 		& \bf{Active comparator new user} \\
 	\hline
 	\end{tabular}
+\vskip0pt plus 1filll
 \flushright{\small{\citet{wintzell_selection_2022}}}
+\end{frame}
+
+\begin{frame}{PNUC vs MSM}
+\vskip0pt plus 1filll
+	\centering
+	\begin{tabular}{lll}
+	\hline
+		& PNUC & MSM \\
+	\hline
+		Complexity & Higher & Lower \\
+		Computation & Higher & Lower \\
+		Precision & Higher? & Lower? \\
+	\hline
+	\end{tabular}
+\vskip0pt plus 1filll
+\flushright{\small{\citet{webster-clark_alternative_2022}}}
+\end{frame}
+
+\begin{frame}{Estimands}
+    \calculatespace%
+    \begin{center}
+	\includegraphics[height=0.95\contentheight]{ref/estimands.pdf}
+    \end{center}
 \end{frame}
 
 \begin{frame}{Prevalent new-user cohort design step by step}
@@ -165,6 +201,15 @@
     \end{center}
 \flushright{\small{\citet{suissa_prevalent_2017}}}
 
+\end{frame}
+
+\begin{frame}{Time-conditional propensity score}
+	\begin{itemize}
+		\item Measured at treatment time
+		\item Positivity verified within exposure set
+		\item Score from conditional logistic regression or Cox
+		\item Prevalent users can fall into multiple exposure sets
+	\end{itemize}
 \end{frame}
 
 \begin{frame}{Matching}
@@ -220,33 +265,11 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Estimands}
-    \calculatespace%
-    \begin{center}
-	\includegraphics[height=0.95\contentheight]{ref/estimands.pdf}
-    \end{center}
-\end{frame}
-
 \begin{frame}{Results}
     \calculatespace%
     \begin{center}
 	\includegraphics[height=0.90\contentheight]{ref/suissa-fig3-mscm.pdf}
     \end{center}
-\end{frame}
-
-\begin{frame}{PNUC vs MSCM}
-	\centering
-	\begin{tabular}{lll}
-	\hline
-		& PNUC & MSCM \\
-	\hline
-		Complexity & XX & XX \\
-		Computation & XX & XX \\
-		Precision & XX & XX \\
-		Estimand & XX & XX \\
-	\hline
-	\end{tabular}
-\flushright{\small{\citet{webster-clark_alternative_2022}}}
 \end{frame}
 
 \begin{frame}{PNUC sub-cohorts}
@@ -256,19 +279,23 @@
 \end{frame}
 
 \begin{frame}{Developments}
+\vskip0pt plus 1filll
     \begin{itemize}
 	\item Matching with/without replacement or weighting
 	\item How to condition on ``length of exposure''?
 	\item Positivity and matching
 	\item Estimating the propensity score
+	\item Discontinuation only; intensification
     \end{itemize}
+\vskip0pt plus 1filll
 \flushright{\small{\citet{webster-clark_presentation_2020}}}
 \end{frame}
 
 \begin{frame}{Discussion}
     \begin{itemize}
-	\item Have you used the prevalent new-user cohort design or the marginal structural Cox model approach? If so, please tell us about it.
-    	\item Would you use either of these methods for your current research interests? What do you see as the barriers to using them?
+	\item Does the PNUC design look useful to you?
+	\item Would you use it rather than a marginal structural model?
+    	\item What are the barriers to using these methods?
     \end{itemize}
 \end{frame}
 
@@ -280,7 +307,7 @@
 \begin{frame}{Acknowledgments}
     \begin{itemize}
 	\item An earlier version was presented to the Medicine
-	Intelligence CRE Methods journal club on 1 July 2021
+	Intelligence CRE methods journal club on 1 July 2021
     \end{itemize}
 \end{frame}
 
