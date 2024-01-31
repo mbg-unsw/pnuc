@@ -1,5 +1,5 @@
 # Introduction to the prevalent new-user cohort design
-An introuctory presentation based on Tran and Suissa (2021).
+An introductory presentation based on Tran and Suissa (2021).
 
 This paper applies the prevalent new-user cohort design to look at the effect
 of PPI treatment on mortality in idiopathic pulmonary fibrosis. It describes
